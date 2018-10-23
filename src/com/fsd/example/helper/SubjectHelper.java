@@ -118,7 +118,9 @@ public class SubjectHelper {
         System.out.println("\nEnter subject by which you want to search : ");
         String subtitle = input.nextLine();
         for (Subject subject:subjectList){
-            if(subject.getSubtitle().contains(subtitle)) {
+            if(subtitle!=null
+                    && subject.getSubtitle()!=null
+                    && subject.getSubtitle().toLowerCase().contains(subtitle.toLowerCase())) {
                 for (Book book : subject.getReferences()) {
                         bookDetailsList.add(book);
                 }

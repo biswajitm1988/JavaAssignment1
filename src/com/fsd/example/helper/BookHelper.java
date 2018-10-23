@@ -20,7 +20,8 @@ public class BookHelper {
         System.out.println("\nEnter title by which you want to search : ");
         String bookTitle = input.nextLine();
         for (Book book:bookList){
-            if(book.getTitle().contains(bookTitle)){
+            if(bookTitle!=null && book.getTitle()!=null
+                && book.getTitle().toLowerCase().contains(bookTitle.toLowerCase())){
                 bookDetailsList.add(book);
             }
         }
@@ -112,12 +113,12 @@ public class BookHelper {
         Scanner input = new Scanner(System.in);
         LocalDate publishDate=null;
         boolean validDate=true;
-        System.out.println("\n Add published date in (mm/dd/yy) format : ");
+        System.out.println("\nAdd published date in (mm/dd/yy) format : ");
         String inputDate = input.nextLine();
         try {
             publishDate = LocalDate.parse(new SimpleDateFormat("yyyy-mm-dd").format(new SimpleDateFormat("mm/dd/yy").parse(inputDate)));
         }catch(Exception e){
-            System.out.println("\n Invalid input format "+e.getMessage());
+            System.out.println("\nInvalid input format "+e.getMessage());
             parsePublishDate();
         }
         return publishDate;
